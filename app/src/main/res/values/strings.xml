@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Calculator with Square Btns</string>
+    <string name="multiplication_sign">\u00d7</string>
+    <string name="division_sign">÷</string>
+</resources>

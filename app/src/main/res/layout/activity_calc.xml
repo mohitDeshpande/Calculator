@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_dark"
+    tools:context="com.alqaraghuli.Calc_3_styled_btns.CalcActivity">
+
+    <TextView
+        android:id="@+id/numberText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="right"
+        android:text="0"
+        android:textColor="@android:color/white"
+        android:textSize="32sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="0.0" />
+
+
+    <TextView
+        android:id="@+id/detailText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="start"
+        android:text="-"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numberText"
+        tools:text="Enter a number" />
+
+    <com.alqaraghuli.Calc_3_styled_btns.LinearLayoutAspectRatio
+        android:id="@+id/allButtons"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/darker_gray"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_margin="0dp"
+        android:padding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailText">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/rowC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:weightSum="40"
+            android:layout_margin="0dp"
+            android:padding="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailText">
+
+            <Button
+                android:id="@+id/bC"
+                android:text="C"
+                android:onClick="onClickClear"
+                style="@style/number_button" />
+
+            <Button
+                android:id="@+id/bPercent"
+                android:text="%"
+                android:onClick="onClickPercent"
+                style="@style/number_button" />
+
+            <Button
+                android:id="@+id/bSQRT"
+                android:text="\u221A"
+                style="@style/number_button" />
+
+            <Button
+                android:id="@+id/bDivision"
+                android:text="@string/division_sign"
+                android:onClick="onClickOperation"
+                style="@style/operator_button" />
+
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/row789"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:weightSum="40"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailText">
+
+            <Button
+                android:id="@+id/b7"
+                android:text="7"
+                android:onClick="onClickNumber"
+                style="@style/number_button" />
+            />
+
+            <Button
+                android:id="@+id/b8"
+                android:text="8"
+                android:onClick="onClickNumber"
+                style="@style/number_button" />
+
+            <Button
+                android:id="@+id/b9"
+                android:text="9"
+                android:onClick="onClickNumber"
+                style="@style/number_button" />
+
+            <Button
+                android:id="@+id/bMut"
+                android:text="@string/multiplication_sign"
+                android:onClick="onClickOperation"
+                style="@style/operator_button" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/row456"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:weightSum="40"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailText">
+
+            <Button
+                android:id="@+id/b4"
+                android:text="4"
+                android:onClick="onClickNumber"
+                style="@style/number_button" />
+
+            <Button
+                android:id="@+id/b5"
+                android:text="5"
+                android:onClick="onClickNumber"
+                style="@style/number_button" />
+
+            <Button
+                android:id="@+id/b6"
+                android:text="6"
+                android:onClick="onClickNumber"
+                style="@style/number_button" />
+
+            <Button
+                android:id="@+id/bMinus"
+                android:text="-"
+                android:onClick="onClickOperation"
+                style="@style/operator_button" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/row123"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:weightSum="40"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailText">
+
+            <Button
+                android:id="@+id/b1"
+                android:text="1"
+                android:onClick="onClickNumber"
+                style="@style/number_button" />
+
+            <Button
+                android:id="@+id/b2"
+                android:text="2"
+                android:onClick="onClickNumber"
+                style="@style/number_button" />
+
+            <Button
+                android:id="@+id/b3"
+                android:text="3"
+                android:onClick="onClickNumber"
+                style="@style/number_button" />
+
+            <Button
+                android:id="@+id/bPlus"
+                android:text="+"
+                android:onClick="onClickOperation"
+                style="@style/operator_button" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/row0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailText">
+
+            <Button
+                android:id="@+id/b0"
+                android:text="0"
+                android:onClick="onClickNumber"
+                style="@style/number_button"
+                android:layout_weight="20" />
+
+            <Button
+                android:id="@+id/bDot"
+                android:text="."
+                style="@style/number_button" />
+
+            <Button
+                android:id="@+id/bEqual"
+                android:text="="
+                android:onClick="onClickEqual"
+                style="@style/operator_button" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+    </com.alqaraghuli.Calc_3_styled_btns.LinearLayoutAspectRatio>
+</android.support.constraint.ConstraintLayout>
