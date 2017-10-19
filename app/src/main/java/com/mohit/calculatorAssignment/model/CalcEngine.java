@@ -1,5 +1,8 @@
 package com.mohit.calculatorAssignment.model;
 
+import java.sql.ResultSet;
+import java.util.Stack;
+
 /**
  * The Calculator Engine for the application
  *
@@ -9,11 +12,13 @@ public class CalcEngine {
 
     private Double memory;
     private Double result;
+    private Stack<Double> resultStack;
 
 
     public CalcEngine() {
         memory = 0.0;
         result = 0.0;
+        resultStack = new Stack<>();
     }
 
     /**
@@ -22,7 +27,8 @@ public class CalcEngine {
      * @return result
      */
     public Double add(Double value) {
-        return result += value;
+        resultStack.push(result += value);
+        return result;
     }
 
     /**
@@ -32,7 +38,8 @@ public class CalcEngine {
      * @return result
      */
     public Double subtract(Double value) {
-        return result -= value;
+        resultStack.push(result -= value);
+        return result;
     }
 
     /**
@@ -42,7 +49,8 @@ public class CalcEngine {
      * @return result
      */
     public Double multiply(Double value) {
-        return result *= value;
+        resultStack.push(result *= value);
+        return result;
     }
 
     /**
@@ -53,10 +61,10 @@ public class CalcEngine {
      */
     public Double divide(Double value) {
         if (value != 0) {
-            return result /= value;
-        } else {
-            return result;
+            resultStack.push(result /= value);
         }
+        return result;
+
     }
 
     /**
@@ -65,7 +73,8 @@ public class CalcEngine {
      * @return result
      */
     public Double percent() {
-        return result /= 100;
+        resultStack.push(result /= 100);
+        return result;
     }
 
     /**
@@ -75,11 +84,27 @@ public class CalcEngine {
      */
     public Double root() {
         result = Math.sqrt(result);
+        resultStack.push(result);
         return result;
     }
 
+    /**
+     * Square the result
+     *
+     * @return result
+     */
     public Double square() {
-        return result *= result;
+        resultStack.push(result *= result);
+        return result;
+    }
+
+    /**
+     * undo the last result
+     *
+     * @return the current result before undo
+     */
+    public Double undo() {
+        return resultStack.pop();
     }
 
     /**
@@ -87,6 +112,7 @@ public class CalcEngine {
      */
     public void clearResult() {
         result = 0d;
+        resultStack = new Stack<>();
     }
 
     /**
