@@ -57,7 +57,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailText">
+        app:layout_constraintTop_toBottomOf="@+id/detailText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0">
 
         <android.support.v7.widget.LinearLayoutCompat
             android:id="@+id/rowC"
@@ -74,18 +76,19 @@
             <Button
                 android:id="@+id/bC"
                 android:text="C"
-                android:onClick="onClickClear"
+                android:onClick="onClickOperation"
                 style="@style/number_button" />
 
             <Button
                 android:id="@+id/bPercent"
                 android:text="%"
-                android:onClick="onClickPercent"
+                android:onClick="onClickOperation"
                 style="@style/number_button" />
 
             <Button
                 android:id="@+id/bSQRT"
                 android:text="\u221A"
+                android:onClick="onClickOperation"
                 style="@style/number_button" />
 
             <Button

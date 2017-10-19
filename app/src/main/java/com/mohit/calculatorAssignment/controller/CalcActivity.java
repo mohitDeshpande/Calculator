@@ -10,8 +10,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.mohit.calculatorAssignment.R;
+import com.mohit.calculatorAssignment.model.CalcEngine;
+
+import static com.mohit.calculatorAssignment.R.string.addition;
 
 public class CalcActivity extends AppCompatActivity {
+
+    CalcEngine calculator;
 
     TextView numberText;
     TextView detailText;
@@ -27,6 +32,7 @@ public class CalcActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calc);
         numberText = (TextView) findViewById(R.id.numberText);
         detailText = (TextView) findViewById(R.id.detailText);
+        calculator = new CalcEngine();
     }
 
     public void onClickNumber(View view) {
@@ -66,11 +72,40 @@ public class CalcActivity extends AppCompatActivity {
     }
 
     public void onClickOperation(View view) {
-        operation = ((Button) view).getText().charAt(0);
-        operator1 = number;
-        detailText.setText(number + operation);
-        numberText.setText("0");
-        finished = false;
+        int operation = ((Button) view).getId();
+        switch (operation) {
+
+            case R.id.bPlus: // Addition
+                break;
+
+            case R.id.bMinus: // Subtraction
+                break;
+
+            case R.id.bMut: // Multiply
+                break;
+
+            case R.id.bDivision: // Divide
+                break;
+
+            case R.id.bSQRT: // Square Root
+                break;
+
+            case R.id.bPercent: // Percent
+                break;
+
+            case R.id.bEqual: // Equal
+                break;
+
+            case R.id.bC: // Clear
+                String text = (String) ((Button) view).getText();
+                if (text.equals("C")) {
+                    ((Button) view).setText("AC");
+                } else {
+                    ((Button) view).setText("C");
+                }
+                break;
+
+        }
     }
 
     public void onClickClear(View view) {
