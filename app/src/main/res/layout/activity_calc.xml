@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_dark"
-    tools:context="com.alqaraghuli.Calc_3_styled_btns.CalcActivity">
+    tools:context="com.mohit.calculatorAssignment.controller.CalcActivity">
 
     <TextView
         android:id="@+id/numberText"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/numberText"
         tools:text="Enter a number" />
 
-    <com.alqaraghuli.Calc_3_styled_btns.LinearLayoutAspectRatio
+    <com.mohit.calculatorAssignment.view.LinearLayoutAspectRatio
         android:id="@+id/allButtons"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -235,5 +235,5 @@
 
         </android.support.v7.widget.LinearLayoutCompat>
 
-    </com.alqaraghuli.Calc_3_styled_btns.LinearLayoutAspectRatio>
+    </com.mohit.calculatorAssignment.view.LinearLayoutAspectRatio>
 </android.support.constraint.ConstraintLayout>

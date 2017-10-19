@@ -1,4 +1,4 @@
-package com.alqaraghuli.Calc_3_styled_btns;
+package com.mohit.calculatorAssignment.controller;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.mohit.calculatorAssignment.R;
 
 public class CalcActivity extends AppCompatActivity {
 
@@ -116,27 +118,3 @@ public class CalcActivity extends AppCompatActivity {
     }
 }
 
-class LinearLayoutAspectRatio extends LinearLayoutCompat {
-
-
-    public LinearLayoutAspectRatio(Context context) {
-        super(context, null);
-    }
-
-    public LinearLayoutAspectRatio(Context context, AttributeSet attrs) {
-        super(context, attrs, 0);
-    }
-
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        double aspectRatio = 4.0/5.0;
-        int w = MeasureSpec.getSize(widthMeasureSpec);
-        int h = MeasureSpec.getSize(heightMeasureSpec);
-
-        int newWidth = (int) Math.min(w, aspectRatio * h);
-        int newHeight = (int) (1.0 * newWidth / aspectRatio);
-
-        super.onMeasure(MeasureSpec.makeMeasureSpec(newWidth, MeasureSpec.EXACTLY),
-                MeasureSpec.makeMeasureSpec(newHeight, MeasureSpec.EXACTLY));
-    }
-}
