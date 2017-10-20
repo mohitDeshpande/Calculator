@@ -47,8 +47,6 @@ public class CalcActivity extends AppCompatActivity {
         Button button = (Button) view;
         number = String.valueOf(Long.parseLong(numberText.getText().toString()+button.getText()));
         numberText.setText(number);
-
-        Log.d("Number", "Result: " + calculator.getResult());
     }
 
 
@@ -86,16 +84,25 @@ public class CalcActivity extends AppCompatActivity {
         // if user is shifting from number selection to operation selection
         if (isNumberSelectionMode) {
             calculator.insertNumber(Double.parseDouble(number));
-            Double result = calculator.getResult();
-            String numberString = result.longValue() == result ? "" + result.longValue() : "" + result;
-            numberText.setText(numberString);
+            displayResult();
         }
         isNumberSelectionMode = false;
         isOperationSelectionMode = true;
 
-        Log.d("Number", "Result: " + calculator.getResult());
         operation = ((Button) view).getId();
+        if (operation == R.id.bC) {
+            calculator.clear();
+            displayResult();
+        } else if (operation == R.id.bEqual) {
+            displayResult();
+        }
         number = (String) numberText.getText();
+    }
+
+    public void displayResult() {
+        Double result = calculator.getResult();
+        String numberString = result.longValue() == result ? "" + result.longValue() : "" + result;
+        numberText.setText(numberString);
     }
 
     public void onClickClear(View view) {

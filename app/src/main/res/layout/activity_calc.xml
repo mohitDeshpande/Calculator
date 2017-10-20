@@ -228,12 +228,13 @@
             <Button
                 android:id="@+id/bDot"
                 android:text="."
+                android:onClick="onClickNumber"
                 style="@style/number_button" />
 
             <Button
                 android:id="@+id/bEqual"
                 android:text="="
-                android:onClick="onClickEqual"
+                android:onClick="onClickOperation"
                 style="@style/operator_button" />
 
         </android.support.v7.widget.LinearLayoutCompat>

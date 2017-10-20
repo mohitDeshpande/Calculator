@@ -13,22 +13,20 @@ import java.util.Stack;
 public class CalcEngine {
 
     private Double memory;
-    private Double result;
     private Stack<Double> numberStack;
     private Stack<Integer> operandStack;
-    private Stack<Double> resultStack;
-
 
     public CalcEngine() {
         memory = 0.0;
-        result = 0.0;
         numberStack = new Stack<>();
         operandStack = new Stack<>();
     }
 
     public void insertNumber(Double number) {
         numberStack.push(number);
-        if (numberStack.size() == 2) execute();
+        if (numberStack.size() == 2) {
+            execute();
+        }
     }
 
     public void insertOperand(Integer operand) {
@@ -42,7 +40,11 @@ public class CalcEngine {
 
     private void execute() {
         Double number2 = numberStack.pop();
-        Double number1 = numberStack.pop();
+        Double number1 = 0d;
+
+        if (!numberStack.isEmpty()) {
+            number1 = numberStack.pop();
+        }
 
         switch (operandStack.pop()) {
             case R.id.bPlus: // Addition
@@ -60,11 +62,25 @@ public class CalcEngine {
             case R.id.bDivision: // Divide
                 numberStack.push(number1 / number2);
                 break;
+
+            case R.id.bPercent:
+                numberStack.push(number1 / 100);
+                break;
+
+            case R.id.bSQRT:
+                numberStack.push(Math.sqrt(number1));
         }
     }
 
     public Double getResult() {
         return numberStack.peek();
+    }
+
+    public void clear() {
+        // FIXME
+        numberStack.clear();
+        numberStack.push(0d);
+        operandStack.clear();
     }
 
     /**
