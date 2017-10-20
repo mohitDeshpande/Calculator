@@ -1,10 +1,12 @@
 package com.mohit.calculatorAssignment.model;
 
-import java.sql.ResultSet;
+import com.mohit.calculatorAssignment.R;
+
 import java.util.Stack;
 
 /**
- * The Calculator Engine for the application
+ * The Calculator Engine for the application,
+ * uses a form of Shunting Yard Algorithm to do the calculations
  *
  * Created by mohit on 2017-10-19.
  */
@@ -12,123 +14,57 @@ public class CalcEngine {
 
     private Double memory;
     private Double result;
+    private Stack<Double> numberStack;
+    private Stack<Integer> operandStack;
     private Stack<Double> resultStack;
 
 
     public CalcEngine() {
         memory = 0.0;
         result = 0.0;
-        resultStack = new Stack<>();
+        numberStack = new Stack<>();
+        operandStack = new Stack<>();
     }
 
-    /**
-     * Add number to result
-     * @param value value to add
-     * @return result
-     */
-    public Double add(Double value) {
-        resultStack.push(result += value);
-        return result;
+    public void insertNumber(Double number) {
+        numberStack.push(number);
+        if (numberStack.size() == 2) execute();
     }
 
-    /**
-     * Subtract number from the result
-     *
-     * @param value value to subtract
-     * @return result
-     */
-    public Double subtract(Double value) {
-        resultStack.push(result -= value);
-        return result;
-    }
-
-    /**
-     * Multiply number to result
-     *
-     * @param value value to multiply
-     * @return result
-     */
-    public Double multiply(Double value) {
-        resultStack.push(result *= value);
-        return result;
-    }
-
-    /**
-     * Divide number from result
-     *
-     * @param value value to divide
-     * @return result
-     */
-    public Double divide(Double value) {
-        if (value != 0) {
-            resultStack.push(result /= value);
+    public void insertOperand(Integer operand) {
+        if (operandStack.isEmpty()) {
+            operandStack.push(operand);
+        } else {
+            execute();
         }
-        return result;
-
     }
 
-    /**
-     * Convert result to percentage
-     *
-     * @return result
-     */
-    public Double percent() {
-        resultStack.push(result /= 100);
-        return result;
-    }
 
-    /**
-     * Get root of result
-     *
-     * @return result
-     */
-    public Double root() {
-        result = Math.sqrt(result);
-        resultStack.push(result);
-        return result;
-    }
+    private void execute() {
+        Double number2 = numberStack.pop();
+        Double number1 = numberStack.pop();
 
-    /**
-     * Square the result
-     *
-     * @return result
-     */
-    public Double square() {
-        resultStack.push(result *= result);
-        return result;
-    }
+        switch (operandStack.pop()) {
+            case R.id.bPlus: // Addition
+                numberStack.push(number1 + number2);
+                break;
 
-    /**
-     * undo the last result
-     *
-     * @return the current result before undo
-     */
-    public Double undo() {
-        return resultStack.pop();
-    }
+            case R.id.bMinus: // Subtraction
+                numberStack.push(number1 - number2);
+                break;
 
-    /**
-     * set result to 0.0
-     */
-    public void clearResult() {
-        result = 0d;
-        resultStack = new Stack<>();
-    }
+            case R.id.bMut: // Multiply
+                numberStack.push(number1 * number2);
+                break;
 
-    /**
-     * clear result and memory
-     */
-    public void clearAll() {
-        clearResult();
-        clearMemory();
+            case R.id.bDivision: // Divide
+                numberStack.push(number1 / number2);
+                break;
+        }
     }
 
     public Double getResult() {
-        return result;
-    }
-
-    public void setResult(Double result) {
-        this.result = result;
+        return numberStack.peek();
     }
 
     /**
