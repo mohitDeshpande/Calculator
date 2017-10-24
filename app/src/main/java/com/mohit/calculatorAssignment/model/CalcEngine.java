@@ -1,5 +1,7 @@
 package com.mohit.calculatorAssignment.model;
 
+import android.util.Log;
+
 import com.mohit.calculatorAssignment.R;
 
 import java.util.Stack;
@@ -23,13 +25,26 @@ public class CalcEngine {
     }
 
     public void insertNumber(Double number) {
+        Log.i("insertNumber", "=====");
+        Log.i("numberStack", String.valueOf(numberStack.size()));
+        Log.i("numberStack", numberStack.toString());
+        Log.i("operandStack", String.valueOf(operandStack.size()));
+        Log.i("operandStack", operandStack.toString());
+
+
         numberStack.push(number);
-        if (numberStack.size() == 2) {
+        if (numberStack.size() >= 2) {
             execute();
         }
     }
 
     public void insertOperand(Integer operand) {
+        Log.i("insertNumber", "=====");
+        Log.i("numberStack", String.valueOf(numberStack.size()));
+        Log.i("numberStack", numberStack.toString());
+        Log.i("operandStack", String.valueOf(operandStack.size()));
+        Log.i("operandStack", operandStack.toString());
+
         if (operandStack.isEmpty()) {
             operandStack.push(operand);
         } else {
@@ -39,6 +54,12 @@ public class CalcEngine {
 
 
     private void execute() {
+        Log.i("execute", "=====");
+        Log.i("numberStack", String.valueOf(numberStack.size()));
+        Log.i("numberStack", numberStack.toString());
+        Log.i("operandStack", String.valueOf(operandStack.size()));
+        Log.i("operandStack", operandStack.toString());
+
         Double number2 = numberStack.pop();
         Double number1 = 0d;
 
@@ -46,40 +67,46 @@ public class CalcEngine {
             number1 = numberStack.pop();
         }
 
-        switch (operandStack.pop()) {
-            case R.id.bPlus: // Addition
-                numberStack.push(number1 + number2);
-                break;
+        if (!operandStack.isEmpty()) {
+            switch (operandStack.pop()) {
+                case R.id.bPlus: // Addition
+                    numberStack.push(number1 + number2);
+                    break;
 
-            case R.id.bMinus: // Subtraction
-                numberStack.push(number1 - number2);
-                break;
+                case R.id.bMinus: // Subtraction
+                    numberStack.push(number1 - number2);
+                    break;
 
-            case R.id.bMut: // Multiply
-                numberStack.push(number1 * number2);
-                break;
+                case R.id.bMut: // Multiply
+                    numberStack.push(number1 * number2);
+                    break;
 
-            case R.id.bDivision: // Divide
-                numberStack.push(number1 / number2);
-                break;
+                case R.id.bDivision: // Divide
+                    numberStack.push(number1 / number2);
+                    break;
 
-            case R.id.bPercent:
-                numberStack.push(number1 / 100);
-                break;
+                case R.id.bPercent:
+                    numberStack.push(number1 / 100);
+                    break;
 
-            case R.id.bSQRT:
-                numberStack.push(Math.sqrt(number1));
+                case R.id.bSQRT:
+                    numberStack.push(Math.sqrt(number1));
+            }
         }
     }
 
     public Double getResult() {
-        return numberStack.peek();
+        Log.i("numberStack", String.valueOf(numberStack.size()));
+        Log.i("operandStack", String.valueOf(operandStack.size()));
+        if (numberStack.isEmpty()) {
+            return 0d;
+        } else {
+            return numberStack.peek();
+        }
     }
 
     public void clear() {
-        // FIXME
         numberStack.clear();
-        numberStack.push(0d);
         operandStack.clear();
     }
 
