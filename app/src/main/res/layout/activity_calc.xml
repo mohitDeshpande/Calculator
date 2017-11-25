@@ -74,24 +74,25 @@
             <Button
                 android:id="@+id/mAdd"
                 android:text="M+"
-                android:onClick="onClickClear"
+                android:onClick="onClickMPlus"
                 style="@style/number_button" />
 
             <Button
                 android:id="@+id/mSub"
                 android:text="M-"
-                android:onClick="onClickPercent"
+                android:onClick="onClickMMinus"
                 style="@style/number_button" />
 
             <Button
                 android:id="@+id/mc"
                 android:text="MC"
+                android:onClick="onClickMemoryClear"
                 style="@style/number_button" />
 
             <Button
                 android:id="@+id/mr"
                 android:text="MR"
-                android:onClick="onClickOperation"
+                android:onClick="onClickRecallMemory"
                 style="@style/number_button" />
 
 

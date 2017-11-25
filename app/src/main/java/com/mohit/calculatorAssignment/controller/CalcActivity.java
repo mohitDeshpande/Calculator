@@ -66,8 +66,25 @@ public class CalcActivity extends AppCompatActivity {
         finished = false;
     }
 
-    public void onClickPercent(View view) {
+    public void onClickMPlus(View view) {
+        calc.addToMemory(Double.parseDouble(numberText.getText().toString()));
+    }
 
+    public void onClickMMinus(View view) {
+        calc.subFromMemory(Double.parseDouble(numberText.getText().toString()));
+    }
+
+    public void onClickMemoryClear(View view) {
+        calc.clearMemory();
+    }
+
+    public void onClickRecallMemory(View view) {
+        number = calc.recallMemory();
+        Double n = Double.parseDouble(number);
+        numberText.setText(n % 1 == 0 ? String.valueOf(n.intValue()) : number);
+    }
+
+    public void onClickPercent(View view) {
         if(operation != ' ') {
             Double op1 = Double.parseDouble(operator1);
             detailText.setText(operator1 + operation + number + "%=");
@@ -83,7 +100,6 @@ public class CalcActivity extends AppCompatActivity {
             numberText.setText( n%1==0 ? String.valueOf(n.intValue()) : number);
         }
         finished = true;
-
     }
 }
 

@@ -5,8 +5,29 @@ package com.mohit.calculatorAssignment.model;
  */
 
 public class Engine {
-    String number;
+    String number = "0";
+    String memory = "0";
 
+    public String addToMemory(Double op1) {
+        Double mem = Double.parseDouble(memory) + op1;
+        memory = String.valueOf(mem);
+        return memory;
+    }
+
+    public String subFromMemory(Double op1) {
+        Double mem = Double.parseDouble(memory) - op1;
+        memory = String.valueOf(mem);
+        return memory;
+    }
+
+    public String clearMemory() {
+        memory = "0";
+        return memory;
+    }
+
+    public String recallMemory() {
+        return memory;
+    }
 
     public String executeOperation(Double op1, Double op2, Character operation) {
         switch (operation) {
