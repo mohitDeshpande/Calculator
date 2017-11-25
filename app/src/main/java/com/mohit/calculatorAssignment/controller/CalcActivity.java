@@ -1,15 +1,13 @@
 package com.mohit.calculatorAssignment.controller;
 
-import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutCompat;
-import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.mohit.calculatorAssignment.R;
+import com.mohit.calculatorAssignment.model.Engine;
 
 public class CalcActivity extends AppCompatActivity {
 
@@ -18,6 +16,9 @@ public class CalcActivity extends AppCompatActivity {
     String number = "", operator1;
     Character operation = ' ';
     boolean finished = false;
+
+    Engine calc = new Engine();
+
     //enum Opration{add, subtract, multiply, divide, none};
     //Avoid enumerators in Android, High memory overhead
 
@@ -42,23 +43,7 @@ public class CalcActivity extends AppCompatActivity {
             Double op1 = Double.parseDouble(operator1);
             Double op2 = Double.parseDouble(number);
             detailText.setText(operator1 + operation + number + "=");
-            switch (operation) {
-                case '+':
-                    number =  String.valueOf(op1 + op2);
-                    break;
-                case '-':
-                    number =  String.valueOf(op1 - op2);
-                    break;
-                case '\u00d7':
-                    number =  String.valueOf(op1 * op2);
-                    break;
-                case '\u00f7':
-                    if(op2 != 0)
-                        number =  String.valueOf(op1 / op2);
-                    else {
-                        detailText.setText("Cannot divide by Zero");
-                    }
-            }
+            number = calc.executeOperation(op1, op2, operation);
             Double n = Double.parseDouble(number);
             numberText.setText( n%1==0 ? String.valueOf(n.intValue()) : number);
             operation = ' ';
@@ -87,23 +72,7 @@ public class CalcActivity extends AppCompatActivity {
             Double op1 = Double.parseDouble(operator1);
             detailText.setText(operator1 + operation + number + "%=");
             Double op2 = Double.parseDouble(number)/100.0;
-            switch (operation) {
-                case '+':
-                    number =  String.valueOf(op1 * (1+ op2));
-                    break;
-                case '-':
-                    number =  String.valueOf(op1 * (1- op2));
-                    break;
-                case '\u00d7':
-                    number =  String.valueOf(op1 * op2);
-                    break;
-                case '\u00f7':
-                    if(op2 != 0)
-                        number =  String.valueOf(op1/op2);
-                    else {
-                        detailText.setText("Cannot divide by Zero");
-                    }
-            }
+            number = calc.executePercent(op1, op2, operation);
             Double n = Double.parseDouble(number);
             numberText.setText( n%1==0 ? String.valueOf(n.intValue()) : number);
             operation = ' ';
