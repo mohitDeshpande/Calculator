@@ -60,6 +60,44 @@
         app:layout_constraintTop_toBottomOf="@+id/detailText">
 
         <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/rowMC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:weightSum="40"
+            android:layout_margin="0dp"
+            android:padding="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailText">
+
+            <Button
+                android:id="@+id/mAdd"
+                android:text="M+"
+                android:onClick="onClickClear"
+                style="@style/number_button" />
+
+            <Button
+                android:id="@+id/mSub"
+                android:text="M-"
+                android:onClick="onClickPercent"
+                style="@style/number_button" />
+
+            <Button
+                android:id="@+id/mc"
+                android:text="MC"
+                style="@style/number_button" />
+
+            <Button
+                android:id="@+id/mr"
+                android:text="MR"
+                android:onClick="onClickOperation"
+                style="@style/number_button" />
+
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.LinearLayoutCompat
             android:id="@+id/rowC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
