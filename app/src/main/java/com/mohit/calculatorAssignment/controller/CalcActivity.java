@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.mohit.calculatorAssignment.R;
-import com.mohit.calculatorAssignment.model.Engine;
+import com.mohit.calculatorAssignment.model.CalcEngine;
 
 public class CalcActivity extends AppCompatActivity {
 
@@ -17,7 +17,7 @@ public class CalcActivity extends AppCompatActivity {
     Character operation = ' ';
     boolean finished = false;
 
-    Engine calc = new Engine();
+    CalcEngine calc = new CalcEngine();
 
     //enum Opration{add, subtract, multiply, divide, none};
     //Avoid enumerators in Android, High memory overhead
